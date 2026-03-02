@@ -81,8 +81,8 @@ export function Web3HeroAnimated() {
         <header className="relative z-10">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 md:px-8">
             <Link href="/" className="flex items-center gap-3">
-              <div className="h-7 w-7 rounded-lg bg-linear-to-br from-rose-400 to-indigo-500" />
-              <span className="text-lg font-bold tracking-tight">Realtime Coding Arena</span>
+              {/* <div className="h-7 w-7 rounded-lg bg-linear-to-br from-rose-400 to-indigo-500" /> */}
+              <span className="text-lg font-bold tracking-tight">Keep Coding </span>
             </Link>
 
             <nav className="hidden items-center gap-8 text-sm/6 text-white/80 md:flex">

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Realtime Coding Arena",
+  title: "Keep Coding",
   description: "AI Interview Platform & Coding Races",
 };
 
