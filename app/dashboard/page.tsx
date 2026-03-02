@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Trophy,
-  Code2,
   Brain,
   BarChart3,
   Zap,
@@ -191,7 +190,7 @@ export default function DashboardPage() {
               >
                 {/* Gradient Background */}
                 <div className={cn(
-                  "absolute inset-0 bg-gradient-to-br opacity-95 group-hover:opacity-100 transition-opacity",
+                  "absolute inset-0 bg-linear-to-br opacity-95 group-hover:opacity-100 transition-opacity",
                   item.gradient
                 )} />
                 
@@ -199,7 +198,7 @@ export default function DashboardPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
                 
                 {/* Content */}
-                <div className="relative z-10 p-8 flex flex-col items-center text-center min-h-[180px] justify-center">
+                <div className="relative z-10 p-8 flex flex-col items-center text-center min-h-45 justify-center">
                   <div className="rounded-xl bg-white/25 p-4 backdrop-blur-sm mb-4 shadow-lg">
                     <Icon className="h-8 w-8 text-white" />
                   </div>
@@ -209,7 +208,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             );
           })}
@@ -217,7 +216,7 @@ export default function DashboardPage() {
 
         {/* AI Recommendations Section */}
         <div className="mb-8">
-          <div className="rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-950/40 via-[#1a1a1a] to-[#1a1a1a] p-6">
+          <div className="rounded-xl border border-purple-500/30 bg-linear-to-br from-purple-950/40 via-[#1a1a1a] to-[#1a1a1a] p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="rounded-lg bg-purple-500/20 p-2">
@@ -378,7 +377,7 @@ export default function DashboardPage() {
                       >
                         {/* Problem Number and Title */}
                         <div className="flex items-center gap-4 flex-1 min-w-0">
-                          <span className="text-sm text-muted-foreground font-medium w-12 flex-shrink-0">
+                          <span className="text-sm text-muted-foreground font-medium w-12 shrink-0">
                             {index + 1}.
                           </span>
                           <span className="text-sm text-foreground group-hover:text-blue-400 transition-colors truncate">
@@ -387,14 +386,14 @@ export default function DashboardPage() {
                         </div>
                         
                         {/* Acceptance Rate */}
-                        <div className="text-sm text-muted-foreground w-20 text-right flex-shrink-0">
+                        <div className="text-sm text-muted-foreground w-20 text-right shrink-0">
                           {p.successRate !== undefined && p.successRate > 0
                             ? `${p.successRate.toFixed(1)}%`
                             : "—"}
                         </div>
                         
                         {/* Difficulty Badge */}
-                        <div className="w-16 flex-shrink-0">
+                        <div className="w-16 shrink-0">
                           {p.difficulty === 1 ? (
                             <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                               Easy
@@ -411,7 +410,7 @@ export default function DashboardPage() {
                         </div>
                         
                         {/* Lock/Star Icon Placeholder */}
-                        <div className="w-6 flex-shrink-0 flex justify-end">
+                        <div className="w-6 shrink-0 flex justify-end">
                           {/* Can add lock or star icon here */}
                         </div>
                       </Link>
