@@ -12,7 +12,7 @@ const sidebarItems = [
   { href: "/dashboard/practice", label: "Study Plan", icon: GraduationCap },
   { href: "/dashboard/questions?list=my", label: "My Lists", icon: List, hasAdd: true },
   { href: "/dashboard/questions?filter=favorite", label: "Favorite", icon: Heart, isPremium: true },
-] as const;
+] as { href: string; label: string; icon: typeof BookOpen; badge?: string; hasAdd?: boolean; isPremium?: boolean }[];
 
 export function ProblemsSidebar() {
   const pathname = usePathname();

@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   Trophy,
   Brain,
@@ -16,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ProblemTopics } from "@/components/problems/ProblemTopics";
+import { ColorChangeCard } from "@/components/color-change-card";
 import { cn } from "@/lib/utils";
 
 type Problem = {
@@ -38,35 +38,7 @@ type Topic = {
   count: number;
 };
 
-const navItems = [
-  {
-    href: "/dashboard/race/create",
-    label: "Coding Room",
-    icon: Zap,
-    gradient: "from-cyan-400 via-blue-500 to-indigo-600",
-  },
-  {
-    href: "/dashboard/contest",
-    label: "Contests",
-    icon: Trophy,
-    gradient: "from-purple-400 via-pink-500 to-rose-600",
-  },
-  {
-    href: "/dashboard/interview",
-    label: "AI Interview",
-    icon: Brain,
-    gradient: "from-orange-400 via-red-500 to-pink-600",
-  },
-  {
-    href: "/dashboard/analytics",
-    label: "Analytics",
-    icon: BarChart3,
-    gradient: "from-indigo-400 via-purple-500 to-violet-600",
-  },
-];
-
 export default function DashboardPage() {
-  const pathname = usePathname();
   const [problems, setProblems] = useState<Problem[]>([]);
   const [topics, setTopics] = useState<Topic[]>([]);
   const [loading, setLoading] = useState(true);
@@ -171,47 +143,39 @@ export default function DashboardPage() {
     <div className="min-h-[calc(100vh-3.5rem)] px-6 py-8 bg-[#1a1a1a]">
       <div className="w-full max-w-7xl mx-auto">
         {/* Feature Cards */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive =
-              pathname === item.href ||
-              (item.href !== "/dashboard" && pathname?.startsWith(item.href));
-            
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "group relative overflow-hidden rounded-xl border border-[#2d2d2d] transition-all duration-300",
-                  "hover:scale-105 hover:shadow-2xl hover:shadow-black/30",
-                  isActive && "ring-2 ring-primary ring-offset-2"
-                )}
-              >
-                {/* Gradient Background */}
-                <div className={cn(
-                  "absolute inset-0 bg-linear-to-br opacity-95 group-hover:opacity-100 transition-opacity",
-                  item.gradient
-                )} />
-                
-                {/* Pattern Overlay */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
-                
-                {/* Content */}
-                <div className="relative z-10 p-8 flex flex-col items-center text-center min-h-45 justify-center">
-                  <div className="rounded-xl bg-white/25 p-4 backdrop-blur-sm mb-4 shadow-lg">
-                    <Icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white leading-tight">
-                    {item.label}
-                  </h3>
-                </div>
-
-                {/* Hover Effect */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Link>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <ColorChangeCard
+            heading="Coding Room"
+            description="Race with friends in real-time coding battles"
+            imgSrc="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop"
+            href="/dashboard/race/create"
+            colorOverlay="rgba(0,180,255,0.6)"
+            icon={<Zap className="h-5 w-5 text-white" />}
+          />
+          <ColorChangeCard
+            heading="Contests"
+            description="Compete in timed challenges and climb ranks"
+            imgSrc="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&auto=format&fit=crop"
+            href="/dashboard/contest"
+            colorOverlay="rgba(200,50,150,0.6)"
+            icon={<Trophy className="h-5 w-5 text-white" />}
+          />
+          <ColorChangeCard
+            heading="AI Interview"
+            description="Practice interviews with AI-powered feedback"
+            imgSrc="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800&auto=format&fit=crop"
+            href="/dashboard/interview"
+            colorOverlay="rgba(240,100,50,0.6)"
+            icon={<Brain className="h-5 w-5 text-white" />}
+          />
+          <ColorChangeCard
+            heading="Analytics"
+            description="Track progress and identify skill gaps"
+            imgSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop"
+            href="/dashboard/analytics"
+            colorOverlay="rgba(34,197,94,0.6)"
+            icon={<BarChart3 className="h-5 w-5 text-white" />}
+          />
         </div>
 
         {/* AI Recommendations Section */}

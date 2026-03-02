@@ -74,7 +74,7 @@ export async function chatCompletion(
       throw new Error("Streaming not yet implemented in chatCompletion. Use streamChatCompletion instead.");
     }
 
-    const content = res.choices[0]?.message?.content;
+    const content = (res as any).choices[0]?.message?.content;
     if (!content) {
       throw new Error("Empty response from LLM");
     }

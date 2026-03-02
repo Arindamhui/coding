@@ -3,6 +3,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/shared/Toaster";
+import { dark } from '@clerk/themes'
+import { ThemeProvider } from "@/components/Themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,16 +29,47 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    appearance={{
+     theme: dark,
+   }}
+    >
       <html lang="en" className="dark" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           suppressHydrationWarning
         >
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
           <Toaster />
         </body>
       </html>
     </ClerkProvider>
   );
 }
+
+// export default function RootLayout({ children }: RootLayoutProps) {
+//   return (
+//     <>
+//       <html lang="en" suppressHydrationWarning>
+//         <head />
+//         <body>
+//           <ThemeProvider
+//             attribute="class"
+//             defaultTheme="system"
+//             enableSystem
+//             disableTransitionOnChange
+//           >
+//             {children}
+//           </ThemeProvider>
+//         </body>
+//       </html>
+//     </>
+//   )
+// }

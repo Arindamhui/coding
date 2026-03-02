@@ -23,14 +23,14 @@ export async function GET(
         id: submissions.id,
         status: submissions.status,
         language: submissions.language,
-        createdAt: submissions.createdAt,
+        submittedAt: submissions.submittedAt,
       })
       .from(submissions)
       .where(and(
         eq(submissions.problemId, problemId),
         eq(submissions.userId, user.id)
       ))
-      .orderBy(desc(submissions.createdAt))
+      .orderBy(desc(submissions.submittedAt))
       .limit(50);
 
     return NextResponse.json(userSubmissions);
